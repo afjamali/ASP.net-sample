@@ -1,0 +1,50 @@
+﻿<h1>Sales Order Search</h1>
+<br><br><br>
+<div ng-app="myApp" ng-controller="homeCtrl">
+    <form novalidate>
+        <fieldset>
+            <label>Date range:</label>
+            <input type="date" placeholder="yyyy-MM-dd" ng-model="fd" ng-change="form.fromDate=fd.toISOString()">
+            <input type="date" placeholder="yyyy-MM-dd" ng-model="td" ng-change="form.toDate=td.toISOString()">
+            <label><input type="radio" name="r1" ng-model="form.orderType" ng-value="'OrderDate'" checked="checked"> Order date</label>
+            <label><input type="radio" name="r1" ng-model="form.orderType" ng-value="'DueDate'"> Due date</label>
+            <label><input type="radio" name="r1" ng-model="form.orderType" ng-value="'ShipDate'"> Ship date</label>
+            <br><br>
+        </fieldset>
+        <fieldset>
+            <label>Customer name:</label><br>
+            <label>First:</label> <input type="text" ng-model="form.firstName">
+            <label>Last:</label> <input type="text" ng-model="form.lastName">
+            <br><br>
+        </fieldset>
+        <button class="btn  alert, glyphicon glyphicon-globe" ng-click="search()">Search</button>
+    </form>
+    <br>
+    <div ng-view></div>
+    <table class='table' ng-if="searchResult.length > 0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Account Number</th>
+                <th>Ship to Address</th>
+                <th>Ship Method</th>
+                <th>Sub Total</th>
+                <th>Tax</th>
+                <th>Freight</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in searchResult">
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.Name }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.AccountNumber }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.ShipToAddress }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.ShipMethod }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.SubTotal }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.Tax }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.Freight }}</a></td>
+                <td><a href="/Home/ProductInfo?id={{result.SalesOrderID}}">{{ result.Total }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

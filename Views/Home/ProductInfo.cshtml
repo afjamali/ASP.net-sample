@@ -1,0 +1,26 @@
+﻿<h1>Detail</h1>
+
+<div ng-app="myApp" ng-controller="productCtrl">
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Product Number</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Discount</th>
+                <th>Line Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ detail.Name }}</td>
+                <td>{{ detail.ProductNumber }}</td>
+                <td>{{ detail.Quantity }}</td>
+                <td>{{ detail.UnitPrice }}</td>
+                <td>{{ detail.Discount }}</td>
+                <td>{{ detail.LineTotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
